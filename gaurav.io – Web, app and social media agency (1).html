@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>gaurav.io – Web, app and social media agency</title>
+<meta name="description" content="gaurav.io builds websites and apps and manages social media for growing businesses.">
+<meta name="theme-color" content="#0F172A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0F172A;--primary:#6366F1;--violet:#8B5CF6;--accent:#22D3EE;
+  --text:#F1F5F9;--muted:#94A3B8;--glass:rgba(255,255,255,.05);--edge:rgba(255,255,255,.1);--wa:#25D366;
+  --grad:linear-gradient(135deg,#6366F1,#8B5CF6);
+  --display:'Sora','Segoe UI',system-ui,sans-serif;--body:'Inter','Segoe UI',system-ui,sans-serif;
+  color-scheme:dark;box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:calc(84px + env(safe-area-inset-top,0px));scroll-behavior:smooth;background:var(--bg)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.65 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.1;letter-spacing:-.03em}
+a{color:inherit}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+section{padding:72px 0}
+@media (min-width:800px){section{padding:104px 0}}
+.sec-h{max-width:640px;margin-bottom:40px}
+.sec-h h2{font-size:clamp(28px,5vw,46px);font-weight:800}
+.sec-h p{color:var(--muted);margin:14px 0 0}
+
+/* ambient glow */
+.glow{position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+  radial-gradient(520px circle at 12% 8%,rgba(99,102,241,.35),transparent 70%),
+  radial-gradient(480px circle at 92% 30%,rgba(34,211,238,.18),transparent 70%),
+  radial-gradient(560px circle at 30% 95%,rgba(139,92,246,.25),transparent 70%)}
+
+/* glass */
+.glass{background:var(--glass);border:1px solid var(--edge);border-radius:20px;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:40}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:39;padding:12px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 14px 0 22px;border-radius:18px}
+.logo{font:800 21px var(--display);text-decoration:none;letter-spacing:-.04em}
+.logo i{font-style:normal;color:var(--accent)}
+.nav nav{display:flex;gap:26px;align-items:center}
+.nav nav a:not(.btn){text-decoration:none;font-weight:500;font-size:14px;color:var(--muted);transition:color .2s}
+.nav nav a:not(.btn):hover{color:var(--text)}
+@media (max-width:760px){.nav nav a:not(.btn){display:none}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;font:600 15px var(--body);padding:15px 26px;border-radius:14px;text-decoration:none;color:#fff;transition:transform .2s,box-shadow .2s,background-position .4s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(.97)}
+.btn-main{background:linear-gradient(135deg,#6366F1,#8B5CF6,#22D3EE);background-size:200% 100%;box-shadow:0 10px 30px -10px rgba(99,102,241,.8)}
+.btn-main:hover{background-position:100% 0;box-shadow:0 14px 34px -8px rgba(34,211,238,.55)}
+.btn-glass{background:var(--glass);box-shadow:inset 0 0 0 1px var(--edge)}
+.btn-glass:hover{background:rgba(255,255,255,.1)}
+.btn-wa{background:var(--wa);color:#05230f}
+.btn-wa:hover{box-shadow:0 12px 28px -10px rgba(37,211,102,.8)}
+.btn.sm{padding:10px 16px;font-size:14px;border-radius:12px}
+.ic{width:19px;height:19px;fill:currentColor;flex:none}
+
+/* hero */
+.hero{padding:56px 0 72px}
+.hero .wrap{display:grid;gap:48px;grid-template-columns:1.2fr .8fr;align-items:center}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.hero{padding-top:36px}}
+.badge{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:500;padding:8px 14px;border-radius:999px;color:var(--text);margin-bottom:24px}
+.badge b{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(34,211,238,.2)}
+.hero h1{font-size:clamp(30px,5.2vw,52px);font-weight:700;line-height:1.12;letter-spacing:-.03em;max-width:18ch}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,#818CF8,#22D3EE);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{font-size:clamp(15px,1.9vw,17px);color:var(--muted);max-width:50ch;margin:18px 0 28px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.cta .btn{flex:1 1 auto}
+@media (min-width:520px){.cta .btn{flex:0 0 auto}}
+.stack{position:relative;display:grid;gap:16px}
+.chat{padding:20px;display:grid;gap:12px;animation:float 8s ease-in-out infinite}
+.chat .h{display:flex;align-items:center;gap:10px;font:600 14px var(--body);color:var(--muted)}
+.chat .h i{width:34px;height:34px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font:700 13px var(--display);font-style:normal;color:#fff}
+.msg{max-width:86%;padding:11px 15px;border-radius:16px;font-size:14.5px;line-height:1.45}
+.msg.in{background:rgba(255,255,255,.08);border-top-left-radius:4px}
+.msg.out{background:var(--grad);margin-left:auto;border-top-right-radius:4px}
+.mini{padding:18px;display:grid;gap:10px;animation:float 8s ease-in-out -4s infinite}
+.mini .d{display:flex;gap:6px}.mini .d b{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.25)}
+.mini .l{height:10px;border-radius:5px;background:rgba(255,255,255,.12)}
+.mini .l.t{height:22px;width:64%;background:rgba(255,255,255,.3)}.mini .l.s{width:46%}
+.mini .bl{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
+.mini .bl span{height:46px;border-radius:12px;background:rgba(99,102,241,.35)}
+.mini .bl span:nth-child(2){background:rgba(34,211,238,.3)}.mini .bl span:nth-child(3){background:rgba(139,92,246,.35)}
+@keyframes float{50%{transform:translateY(-10px)}}
+
+/* bento */
+.bento{display:grid;gap:16px;grid-template-columns:1fr}
+@media (min-width:760px){.bento{grid-template-columns:repeat(4,1fr)}.t-web{grid-column:span 2;grid-row:span 2}.t-app,.t-soc{grid-column:span 2}.t-one{grid-column:span 2}}
+.tile{position:relative;overflow:hidden;padding:28px;display:flex;flex-direction:column;transition:transform .3s,border-color .3s}
+.tile::before{content:"";position:absolute;inset:0;background:radial-gradient(320px circle at var(--x,50%) var(--y,0%),rgba(34,211,238,.16),transparent 60%);opacity:0;transition:opacity .3s}
+.tile:hover{transform:translateY(-5px);border-color:rgba(99,102,241,.55)}
+.tile:hover::before{opacity:1}
+.tile>*{position:relative}
+.ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--grad);margin-bottom:20px;box-shadow:0 8px 24px -8px rgba(99,102,241,.8)}
+.ico svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tile h3{font-size:clamp(21px,2.6vw,26px);font-weight:700}
+.tile p{color:var(--muted);margin:10px 0 0;font-size:15.5px}
+.tile ul{list-style:none;margin:20px 0 26px;padding:0;display:grid;gap:10px;font-size:15px}
+.tile li::before{content:"✓";color:var(--accent);font-weight:700;margin-right:10px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px}
+.tags span{font-size:13px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid var(--edge)}
+.tile .btn{margin-top:auto;align-self:flex-start}
+.t-small{justify-content:center}
+.t-small .big{font:800 28px var(--display);background:linear-gradient(90deg,#818CF8,#22D3EE);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:22px 12px}
+@media (min-width:760px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{text-align:center;padding:6px}
+.stat b{display:block;font:800 clamp(30px,5vw,44px)/1.1 var(--display);background:linear-gradient(90deg,#818CF8,#22D3EE);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:14px;color:var(--muted)}
+/* work */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.filters button{font:500 14px var(--body);color:var(--muted);background:var(--glass);border:1px solid var(--edge);padding:9px 18px;border-radius:12px;cursor:pointer;transition:all .2s}
+.filters button:hover{color:var(--text)}
+.filters button.on{background:var(--grad);color:#fff;border-color:transparent}
+.work{display:grid;gap:16px}
+@media (min-width:640px){.work{grid-template-columns:repeat(2,1fr)}}
+.proj{overflow:hidden;transition:transform .3s,border-color .3s}
+.proj:hover{transform:translateY(-5px);border-color:rgba(34,211,238,.5)}
+.proj.hide{display:none}
+.thumb{height:176px;display:grid;place-items:center;background:linear-gradient(135deg,var(--a),var(--b))}
+.thumb i{width:58%;height:64%;border-radius:14px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);box-shadow:0 20px 40px -16px rgba(0,0,0,.5);transition:transform .4s}
+.thumb.ph i{width:27%;height:80%;border-radius:18px}
+.proj:hover .thumb i{transform:scale(1.06) rotate(-2deg)}
+.proj .info{padding:20px 22px 24px}
+.proj small{color:var(--accent);font-weight:600;font-size:13px}
+.proj h3{font-size:19px;margin:6px 0}
+.proj p{margin:0;color:var(--muted);font-size:15px}
+.proj .res{margin-top:12px;font-weight:600;font-size:14px;color:var(--text)}
+/* quotes + plans */
+.quotes,.plans{display:grid;gap:16px}
+@media (min-width:760px){.quotes,.plans{grid-template-columns:repeat(3,1fr)}}
+.q{padding:26px;display:flex;flex-direction:column;gap:16px}
+.q p{margin:0;font-size:16px}
+.stars{color:var(--accent);letter-spacing:3px;font-size:15px}
+.who{display:flex;align-items:center;gap:12px;margin-top:auto;font-size:14px;font-weight:600}
+.who i{width:42px;height:42px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font:700 15px var(--display);font-style:normal;flex:none}
+.who span{color:var(--muted);display:block;font-size:13px;font-weight:400}
+.plan{position:relative;padding:30px 28px;display:flex;flex-direction:column;transition:transform .3s}
+.plan:hover{transform:translateY(-5px)}
+.plan.pop{border-color:rgba(99,102,241,.7);box-shadow:0 0 0 1px rgba(99,102,241,.45),0 24px 50px -24px rgba(99,102,241,.7)}
+.plan .pt{position:absolute;top:-12px;left:26px;background:var(--grad);font-size:12px;font-weight:600;padding:4px 12px;border-radius:999px}
+.plan h3{font-size:20px}
+.price{font:800 34px var(--display);margin:14px 0 4px;letter-spacing:-.03em}
+.price small{font:400 14px var(--body);color:var(--muted);letter-spacing:0}
+.plan ul{list-style:none;margin:18px 0 26px;padding:0;display:grid;gap:10px;font-size:15px}
+.plan li::before{content:"✓";color:var(--accent);font-weight:700;margin-right:10px}
+.plan .btn{margin-top:auto}
+.note{color:var(--muted);font-size:14px;margin:20px 0 0}
+/* steps */
+.steps{display:grid;gap:16px;counter-reset:s}
+@media (min-width:760px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{padding:28px}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--grad);font:700 17px var(--display);margin-bottom:18px}
+.step h3{font-size:21px;margin-bottom:8px}.step p{margin:0;color:var(--muted);font-size:15.5px}
+
+/* faq */
+.faq{max-width:800px;display:grid;gap:12px}
+details{border-radius:16px;padding:0 22px}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font:600 17px var(--display);letter-spacing:-.01em}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:26px;font-weight:400;color:var(--accent);transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:0 0 20px;color:var(--muted)}
+
+/* contact */
+.contact{padding:clamp(24px,5vw,56px);display:grid;gap:36px;position:relative;overflow:hidden}
+@media (min-width:860px){.contact{grid-template-columns:1fr 1fr;gap:56px}}
+.contact::before{content:"";position:absolute;width:420px;height:420px;right:-120px;top:-160px;background:radial-gradient(circle,rgba(99,102,241,.4),transparent 70%);pointer-events:none}
+.contact>*{position:relative}
+.contact h2{font-size:clamp(28px,4.6vw,42px);font-weight:800}
+.contact p{color:var(--muted);margin:16px 0 26px}
+.cl{display:grid;gap:8px;margin-top:24px;color:var(--muted);font-size:15px}
+.cl a{text-decoration:none}.cl a:hover{color:var(--accent)}
+form{display:grid;gap:14px}
+label{font-size:13px;font-weight:500;color:var(--muted);display:grid;gap:6px}
+input,select,textarea{font:400 16px var(--body);padding:14px 16px;border-radius:12px;border:1px solid var(--edge);background:rgba(15,23,42,.6);color:var(--text);width:100%;transition:border-color .2s,box-shadow .2s}
+input::placeholder,textarea::placeholder{color:#64748B}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 4px rgba(34,211,238,.15)}
+footer{padding:36px 0 128px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;border-top:1px solid var(--edge);padding-top:28px}
+
+/* motion */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+.rise{opacity:0;transform:translateY(22px);animation:rise .8s ease forwards}
+.rise.d1{animation-delay:.1s}.rise.d2{animation-delay:.2s}.rise.d3{animation-delay:.3s}.rise.d4{animation-delay:.4s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* floating whatsapp */
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50;display:flex;align-items:center;text-decoration:none}
+.fab .tip{background:rgba(15,23,42,.85);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--edge);font-weight:600;font-size:14px;border-radius:14px;margin-right:12px;max-width:0;opacity:0;overflow:hidden;white-space:nowrap;padding:12px 0;transition:max-width .5s ease,opacity .4s ease,padding .4s}
+.fab.show .tip{max-width:240px;opacity:1;padding:12px 18px}
+.fab .dot{position:relative;width:60px;height:60px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(37,211,102,.8);transition:transform .2s}
+.fab:hover .dot{transform:scale(1.08)}.fab:active .dot{transform:scale(.94)}
+.fab .dot::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--wa);animation:ping 2.4s ease-out infinite}
+.fab .dot svg{width:31px;height:31px;fill:#fff}
+@keyframes ping{to{transform:scale(1.7);opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal,.rise{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="wa" viewBox="0 0 24 24"><path d="M20.5 3.5A11 11 0 0 0 3.2 16.9L2 22l5.2-1.4A11 11 0 1 0 20.5 3.5zM12 20.5a9 9 0 0 1-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A9 9 0 1 1 12 20.5zm5-6.7c-.3-.1-1.6-.8-1.8-.9s-.4-.1-.6.1-.7.9-.8 1-.3.2-.6.1a7.4 7.4 0 0 1-3.7-3.2c-.3-.5.3-.5.8-1.5a.5.5 0 0 0 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4.1c1.7.7 2.4.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.6-.3z"/></symbol></svg>
+
+<header>
+  <div class="wrap">
+    <div class="nav glass">
+      <a class="logo" href="#top">gaurav<i>.io</i></a>
+      <nav>
+        <a href="#services">Services</a><a href="#work">Work</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+        <a class="btn btn-main sm" href="#contact">Get a quote</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <div class="badge glass rise"><b></b>Taking new projects</div>
+        <h1 class="rise d1">Turn clicks into <em>customers.</em></h1>
+        <p class="lead rise d2">gaurav.io designs your website, builds your app and runs your social media, with one team and one point of contact.</p>
+        <div class="cta rise d3">
+          <a class="btn btn-main" href="#contact">Get a free quote</a>
+          <a class="btn btn-glass" href="#services">Explore services</a>
+        </div>
+      </div>
+      <div class="stack rise d4" aria-hidden="true">
+        <div class="glass chat">
+          <div class="h"><i>g</i>gaurav.io</div>
+          <div class="msg out">Hi, I need a website for my business</div>
+          <div class="msg in">Great! Tell us what you sell and we’ll send ideas and a quote.</div>
+        </div>
+        <div class="glass mini">
+          <div class="d"><b></b><b></b><b></b></div>
+          <div class="l t"></div><div class="l"></div><div class="l s"></div>
+          <div class="bl"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEMO DATA: replace these numbers with your real ones -->
+  <div class="wrap reveal" style="margin-top:-16px">
+    <div class="stats glass">
+      <div class="stat"><b><span class="cnt" data-to="60" data-s="+" style="font:inherit;color:inherit">60+</span></b><span>Projects delivered</span></div>
+      <div class="stat"><b><span class="cnt" data-to="40" data-s="+" style="font:inherit;color:inherit">40+</span></b><span>Happy clients</span></div>
+      <div class="stat"><b><span class="cnt" data-to="4.9" data-d="1" style="font:inherit;color:inherit">4.9</span></b><span>Average client rating</span></div>
+      <div class="stat"><b><span class="cnt" data-to="3" data-s=" hrs" style="font:inherit;color:inherit">3 hrs</span></b><span>Average reply time</span></div>
+    </div>
+  </div>
+
+  <section id="services" style="padding-top:72px">
+    <div class="wrap">
+      <div class="sec-h reveal"><h2>Everything you need to get found and get customers.</h2><p>Pick one service or combine all three. Tap a button to message us about it.</p></div>
+      <div class="bento">
+        <article class="tile glass t-web reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div>
+          <h3>Web development</h3><p>Fast, good-looking websites that turn visitors into enquiries.</p>
+          <ul><li>Custom design for your brand</li><li>Mobile-first and quick to load</li><li>Online store and booking</li><li>Search engine setup</li></ul>
+          <a class="btn btn-main" data-wa="Hi, I’m interested in web development" href="https://wa.me/910000000000" target="_blank" rel="noopener">Ask about websites</a>
+        </article>
+        <article class="tile glass t-app reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
+          <h3>App development</h3><p>Android and iPhone apps your customers enjoy using.</p>
+          <div class="tags"><span>Android</span><span>iOS</span><span>Payments</span><span>Notifications</span></div>
+          <a class="btn btn-glass" data-wa="Hi, I’m interested in app development" href="https://wa.me/910000000000" target="_blank" rel="noopener">Ask about apps</a>
+        </article>
+        <article class="tile glass t-soc reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-4-7.5"/><path d="M21 4v5h-5"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3>Social media handling</h3><p>We run your Instagram and Facebook so you stay consistent.</p>
+          <div class="tags"><span>Posts and reels</span><span>Content calendar</span><span>Ads</span><span>Reports</span></div>
+          <a class="btn btn-glass" data-wa="Hi, I’m interested in social media handling" href="https://wa.me/910000000000" target="_blank" rel="noopener">Ask about social media</a>
+        </article>
+        <article class="tile glass t-small reveal"><div class="big">Fast</div><h3>Quick to load</h3><p>Pages that open instantly on any phone.</p></article>
+        <article class="tile glass t-small reveal"><div class="big">Mobile</div><h3>Phone first</h3><p>Designed for the screen your customers use most.</p></article>
+        <article class="tile glass t-small t-one reveal"><div class="big">One team</div><h3>One point of contact</h3><p>Talk directly to the person doing the work, on WhatsApp.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO DATA: sample projects, replace with your real work -->
+  <section id="work" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-h reveal"><h2>Recent work</h2><p>A few projects we’ve built for businesses like yours.</p></div>
+      <div class="filters reveal" role="group" aria-label="Filter projects">
+        <button class="on" data-f="all">All</button><button data-f="web">Websites</button><button data-f="app">Apps</button><button data-f="soc">Social media</button>
+      </div>
+      <div class="work reveal">
+        <article class="proj glass" data-c="web"><div class="thumb" style="--a:#6366F1;--b:#22D3EE"><i></i></div><div class="info"><small>Website</small><h3>Urban Brew Café</h3><p>A fast website with an online menu and table booking.</p><div class="res">+85% online bookings in 2 months</div></div></article>
+        <article class="proj glass" data-c="app"><div class="thumb ph" style="--a:#8B5CF6;--b:#6366F1"><i></i></div><div class="info"><small>Mobile app</small><h3>FitTrack</h3><p>Android and iOS app for workout plans and progress tracking.</p><div class="res">5,000+ downloads in the first month</div></div></article>
+        <article class="proj glass" data-c="soc"><div class="thumb" style="--a:#EC4899;--b:#8B5CF6"><i></i></div><div class="info"><small>Social media</small><h3>Glow Studio</h3><p>Daily reels and posts with a monthly content calendar.</p><div class="res">+120% Instagram reach in 3 months</div></div></article>
+        <article class="proj glass" data-c="web"><div class="thumb" style="--a:#0EA5E9;--b:#6366F1"><i></i></div><div class="info"><small>Website and store</small><h3>ShopKart</h3><p>An online store with payments and order tracking.</p><div class="res">2x sales within 90 days</div></div></article>
+        <article class="proj glass" data-c="app"><div class="thumb ph" style="--a:#22D3EE;--b:#6366F1"><i></i></div><div class="info"><small>Mobile app</small><h3>PetCare Connect</h3><p>An app for pet owners to book vet visits and get reminders.</p><div class="res">1,200+ bookings in the first 6 weeks</div></div></article>
+        <article class="proj glass" data-c="web"><div class="thumb" style="--a:#8B5CF6;--b:#22D3EE"><i></i></div><div class="info"><small>Website</small><h3>Nova Realty</h3><p>A property listing website with search filters and enquiry forms.</p><div class="res">+60% enquiries in 3 months</div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-h reveal"><h2>How we work</h2><p>Simple steps, clear updates, no surprises.</p></div>
+      <div class="steps">
+        <div class="step glass reveal"><h3>Talk to us</h3><p>Tell us about your business and goals on WhatsApp or a quick call. We reply with ideas and a quote.</p></div>
+        <div class="step glass reveal"><h3>We build</h3><p>You see designs and progress along the way and approve everything before it goes live.</p></div>
+        <div class="step glass reveal"><h3>Launch and grow</h3><p>We go live, then keep improving with support, updates and monthly reports.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO DATA: sample testimonials, replace with real client reviews -->
+  <section id="reviews" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-h reveal"><h2>What clients say</h2></div>
+      <div class="quotes">
+        <figure class="q glass reveal" style="margin:0"><div class="stars">★★★★★</div><p>They delivered our website on time and answered every message on WhatsApp. Bookings went up within weeks.</p><div class="who"><i>RS</i><div>Riya Sharma<span>Owner, Urban Brew Café</span></div></div></figure>
+        <figure class="q glass reveal" style="margin:0"><div class="stars">★★★★★</div><p>Our app looks great and runs smoothly on both Android and iPhone. Very easy team to work with.</p><div class="who"><i>AV</i><div>Amit Verma<span>Founder, FitTrack</span></div></div></figure>
+        <figure class="q glass reveal" style="margin:0"><div class="stars">★★★★★</div><p>I stopped worrying about posting. The content is on brand and our followers keep growing every month.</p><div class="who"><i>NP</i><div>Neha Patel<span>Owner, Glow Studio</span></div></div></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO DATA: sample prices, replace with your real packages -->
+  <section id="pricing" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-h reveal"><h2>Simple pricing</h2><p>Clear starting prices. Your final quote depends on what you need.</p></div>
+      <div class="plans">
+        <div class="plan glass reveal"><h3>Website</h3><div class="price">₹14,999 <small>starting from</small></div><ul><li>Up to 5 pages</li><li>Mobile-friendly design</li><li>Contact form and WhatsApp button</li><li>Basic search engine setup</li></ul><a class="btn btn-glass" data-wa="Hi, I’d like a quote for a website" href="https://wa.me/910000000000" target="_blank" rel="noopener">Get a website quote</a></div>
+        <div class="plan glass pop reveal"><span class="pt">Most popular</span><h3>Social media</h3><div class="price">₹9,999 <small>per month</small></div><ul><li>12 posts and 4 reels a month</li><li>Content calendar</li><li>Comments and messages answered</li><li>Monthly performance report</li></ul><a class="btn btn-main" data-wa="Hi, I’d like a quote for social media handling" href="https://wa.me/910000000000" target="_blank" rel="noopener">Start with social media</a></div>
+        <div class="plan glass reveal"><h3>Mobile app</h3><div class="price">₹59,999 <small>starting from</small></div><ul><li>Android and iOS</li><li>Login and notifications</li><li>Admin panel</li><li>Store publishing help</li></ul><a class="btn btn-glass" data-wa="Hi, I’d like a quote for a mobile app" href="https://wa.me/910000000000" target="_blank" rel="noopener">Get an app quote</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-h reveal"><h2>Common questions</h2></div>
+      <div class="faq reveal">
+        <details class="glass"><summary>How long does a website take?</summary><p>A typical business website takes 1 to 3 weeks, depending on pages and features. You get a clear timeline with your quote.</p></details>
+        <details class="glass"><summary>Can you build a website and an app together?</summary><p>Yes. We can build both on the same system so your data and design stay connected.</p></details>
+        <details class="glass"><summary>What do you need to manage my social media?</summary><p>Your logo, brand colors, photos of your work and access to your accounts. We handle the content and replies.</p></details>
+        <details class="glass"><summary>Will I own my website and app?</summary><p>Yes. You own the design, content and code once the project is complete and paid.</p></details>
+        <details class="glass"><summary>How do I get a quote?</summary><p>Message us on WhatsApp or use the form below. We’ll reply after a short chat about your needs.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-top:0">
+    <div class="wrap">
+      <div class="contact glass reveal">
+        <div>
+          <h2>Let’s build something that grows your business.</h2>
+          <p>Send a few details and we’ll reply on WhatsApp with ideas and a quote.</p>
+          <a class="btn btn-wa" data-wa="Hi, I’d like to talk about a project" href="https://wa.me/910000000000" target="_blank" rel="noopener"><svg class="ic"><use href="#wa"/></svg>Chat on WhatsApp</a>
+          <div class="cl"><a href="mailto:hello@gaurav.io">hello@gaurav.io</a><a href="https://instagram.com/gaurav.io" target="_blank" rel="noopener">Instagram: @gaurav.io</a></div>
+        </div>
+        <form id="f">
+          <label>Your name<input id="n" required placeholder="Full name" autocomplete="name"></label>
+          <label>What do you need?<select id="s"><option>Website</option><option>Mobile app</option><option>Social media handling</option><option>All of the above</option></select></label>
+          <label>Tell us more<textarea id="m" rows="3" placeholder="A short description of your business"></textarea></label>
+          <button class="btn btn-main" type="submit">Send on WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© <span id="y">2026</span> gaurav.io. All rights reserved.</span><span>Websites · Apps · Social media</span></div></footer>
+
+<a class="fab" id="fab" data-wa="Hi, I’d like to talk to an agent" href="https://wa.me/910000000000" target="_blank" rel="noopener" aria-label="Chat with an agent on WhatsApp">
+  <span class="tip">Chat with an agent</span>
+  <span class="dot"><svg viewBox="0 0 24 24"><use href="#wa"/></svg></span>
+</a>
+
+<script>
+(function(){
+  var NUM="910000000000"; /* your WhatsApp number: country code + number, no + or spaces */
+  var url=function(t){return "https://wa.me/"+NUM+"?text="+encodeURIComponent(t)};
+  document.querySelectorAll("[data-wa]").forEach(function(a){a.href=url(a.getAttribute("data-wa"))});
+  document.getElementById("y").textContent=new Date().getFullYear();
+
+  var els=document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle("in",e.isIntersecting)})},{threshold:.12});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add("in")})}
+
+  document.querySelectorAll(".tile").forEach(function(t){
+    t.addEventListener("pointermove",function(e){
+      var r=t.getBoundingClientRect();
+      t.style.setProperty("--x",(e.clientX-r.left)+"px");t.style.setProperty("--y",(e.clientY-r.top)+"px");
+    });
+  });
+
+  document.getElementById("f").addEventListener("submit",function(e){
+    e.preventDefault();
+    window.open(url("Hi, I’m "+document.getElementById("n").value+". I need: "+document.getElementById("s").value+". "+document.getElementById("m").value),"_blank");
+  });
+
+  var reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var cio=("IntersectionObserver" in window)?new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return;var el=e.target,to=+el.dataset.to,d=+(el.dataset.d||0),s=el.dataset.s||"",t0=performance.now();cio.unobserve(el);
+    (function step(t){var p=Math.min((t-t0)/1200,1);el.textContent=(to*(1-Math.pow(1-p,3))).toFixed(d)+s;if(p<1)requestAnimationFrame(step)})(t0);
+  })},{threshold:.6}):null;
+  document.querySelectorAll(".cnt").forEach(function(el){if(cio&&!reduce){el.textContent="0"+(el.dataset.s||"");cio.observe(el)}});
+
+  document.querySelectorAll(".filters button").forEach(function(b){
+    b.addEventListener("click",function(){
+      document.querySelectorAll(".filters button").forEach(function(x){x.classList.toggle("on",x===b)});
+      var f=b.dataset.f;
+      document.querySelectorAll(".proj").forEach(function(p){p.classList.toggle("hide",f!=="all"&&p.dataset.c!==f)});
+    });
+  });
+
+  var fab=document.getElementById("fab");
+  setTimeout(function(){fab.classList.add("show")},2500);
+  setTimeout(function(){fab.classList.remove("show")},9000);
+  fab.addEventListener("mouseenter",function(){fab.classList.add("show")});
+  fab.addEventListener("mouseleave",function(){fab.classList.remove("show")});
+})();
+</script>
+</body>
+</html>
